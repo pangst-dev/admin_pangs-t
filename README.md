@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin PANGS!T - Monitoring Pesanan Real-Time</title>
+    <!-- Gunakan CDN untuk semua resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -35,14 +36,13 @@
             background-color: #f5f7fa;
             color: var(--dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
         
         .container {
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
         /* ==================== LOGIN PAGE ==================== */
@@ -52,16 +52,16 @@
             align-items: center;
             min-height: 100vh;
             background: linear-gradient(135deg, var(--secondary) 0%, #1a1c2f 100%);
-            padding: 15px;
+            padding: 20px;
         }
         
         .login-box {
             background-color: white;
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 15px;
+            padding: 40px;
             width: 100%;
-            max-width: 380px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             animation: fadeIn 0.5s ease;
         }
         
@@ -72,17 +72,17 @@
         
         .login-logo {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         .login-logo .logo-icon {
             color: var(--primary);
-            font-size: 42px;
-            margin-bottom: 12px;
+            font-size: 48px;
+            margin-bottom: 15px;
         }
         
         .login-logo .logo-text {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--secondary);
         }
@@ -93,38 +93,35 @@
         
         .login-title {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         .login-title h2 {
             color: var(--secondary);
-            margin-bottom: 8px;
-            font-size: 22px;
+            margin-bottom: 10px;
         }
         
         .login-title p {
             color: var(--gray);
-            font-size: 14px;
         }
         
         .login-form .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         
         .login-form label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 600;
             color: var(--secondary);
-            font-size: 14px;
         }
         
         .login-form input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px;
             border: 1px solid var(--light-gray);
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 16px;
             transition: var(--transition);
         }
         
@@ -136,9 +133,9 @@
         
         .login-btn {
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             margin-top: 10px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             background: var(--primary);
             color: white;
@@ -155,8 +152,8 @@
         .login-error {
             color: var(--danger);
             text-align: center;
-            margin-top: 12px;
-            font-size: 13px;
+            margin-top: 15px;
+            font-size: 14px;
             display: none;
         }
         
@@ -169,7 +166,7 @@
         .admin-header {
             background: linear-gradient(135deg, var(--secondary) 0%, #1a1c2f 100%);
             color: white;
-            padding: 15px 0;
+            padding: 20px 0;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
@@ -180,23 +177,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
         }
         
         .admin-logo {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .admin-logo-icon {
             color: var(--primary);
-            font-size: 22px;
+            font-size: 24px;
         }
         
         .admin-logo-text {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
         }
         
@@ -207,13 +202,12 @@
         .admin-user {
             display: flex;
             align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            gap: 15px;
         }
         
         .admin-avatar {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
@@ -221,102 +215,97 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 18px;
         }
         
         .logout-btn {
             background-color: transparent;
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 5px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             font-weight: 500;
-            font-size: 14px;
         }
         
         .logout-btn:hover {
             background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         
         .admin-main {
-            min-height: calc(100vh - 130px);
-            padding: 25px 0;
+            min-height: calc(100vh - 160px);
+            padding: 30px 0;
         }
         
         .admin-title {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         .admin-title h1 {
-            font-size: 28px;
+            font-size: 32px;
             color: var(--secondary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         
         .live-badge {
             background: var(--danger);
             color: white;
-            font-size: 11px;
-            padding: 4px 10px;
+            font-size: 12px;
+            padding: 5px 12px;
             border-radius: 20px;
             animation: pulse 1.5s infinite;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
         }
         
         @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
         }
         
         /* ==================== STATS CARDS ==================== */
         .stats-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
         
         .stat-card {
             background-color: white;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 12px;
+            padding: 25px;
             box-shadow: var(--shadow);
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             transition: var(--transition);
             cursor: pointer;
             border: 2px solid transparent;
         }
         
         .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
             border-color: var(--primary);
         }
         
         .stat-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
+            font-size: 24px;
             color: white;
-            flex-shrink: 0;
         }
         
         .stat-icon.pending {
@@ -336,14 +325,14 @@
         }
         
         .stat-info h3 {
-            font-size: 26px;
-            margin-bottom: 4px;
+            font-size: 32px;
+            margin-bottom: 5px;
             color: var(--secondary);
         }
         
         .stat-info p {
             color: var(--gray);
-            font-size: 13px;
+            font-size: 14px;
         }
         
         /* ==================== CONTROLS ==================== */
@@ -351,27 +340,27 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 15px;
             background-color: white;
-            padding: 18px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
         }
         
         .search-box {
             position: relative;
             flex: 1;
-            min-width: 250px;
+            max-width: 400px;
         }
         
         .search-box input {
             width: 100%;
-            padding: 11px 18px 11px 40px;
+            padding: 12px 20px 12px 45px;
             border: 1px solid var(--light-gray);
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 16px;
             transition: var(--transition);
         }
         
@@ -383,23 +372,20 @@
         
         .search-icon {
             position: absolute;
-            left: 13px;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--gray);
-            font-size: 16px;
         }
         
         .filter-controls {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
-            overflow-x: auto;
-            padding-bottom: 5px;
         }
         
         .filter-btn {
-            padding: 9px 16px;
+            padding: 10px 20px;
             background-color: white;
             border: 1px solid var(--light-gray);
             border-radius: 8px;
@@ -408,9 +394,7 @@
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            white-space: nowrap;
+            gap: 8px;
         }
         
         .filter-btn:hover {
@@ -426,50 +410,46 @@
         /* ==================== ORDERS TABLE ==================== */
         .orders-table-container {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
             overflow: hidden;
-            margin-bottom: 30px;
-            overflow-x: auto;
+            margin-bottom: 40px;
         }
         
         .table-header {
-            padding: 18px;
+            padding: 20px;
             border-bottom: 1px solid var(--light-gray);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
         }
         
         .table-header h3 {
             color: var(--secondary);
-            font-size: 17px;
+            font-size: 18px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .refresh-btn {
             background: none;
             border: 1px solid var(--light-gray);
-            padding: 7px 14px;
+            padding: 8px 16px;
             border-radius: 6px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             font-weight: 500;
-            font-size: 14px;
         }
         
         .refresh-btn:hover {
             background-color: var(--light-gray);
         }
         
-        .refresh-btn.rotating i {
+        .refresh-btn.rotating {
             animation: rotate 1s linear infinite;
         }
         
@@ -481,7 +461,6 @@
         .orders-table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 1000px;
         }
         
         .orders-table thead {
@@ -489,11 +468,11 @@
         }
         
         .orders-table th {
-            padding: 16px 12px;
+            padding: 18px 15px;
             text-align: left;
             font-weight: 600;
             color: var(--secondary);
-            font-size: 14px;
+            font-size: 15px;
             border-bottom: 2px solid var(--light-gray);
         }
         
@@ -517,43 +496,52 @@
         }
         
         .orders-table td {
-            padding: 14px 12px;
-            vertical-align: middle;
-            font-size: 14px;
+            padding: 15px;
+            vertical-align: top;
         }
         
         .order-id {
             font-weight: 600;
             color: var(--secondary);
-            font-family: monospace;
-            font-size: 13px;
         }
         
         .customer-info .customer-name {
             font-weight: 600;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
             color: var(--secondary);
-            font-size: 14px;
         }
         
         .customer-info .customer-phone {
             color: var(--gray);
-            font-size: 13px;
+            font-size: 14px;
         }
         
         .product-list {
             list-style: none;
-            max-height: 90px;
+            max-height: 100px;
             overflow-y: auto;
             padding-right: 5px;
-            margin: 0;
+        }
+        
+        .product-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .product-list::-webkit-scrollbar-track {
+            background: var(--light-gray);
+            border-radius: 4px;
+        }
+        
+        .product-list::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
         }
         
         .product-list li {
-            margin-bottom: 6px;
-            padding-bottom: 6px;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
             border-bottom: 1px dashed var(--light-gray);
-            font-size: 13px;
+            font-size: 14px;
         }
         
         .product-list li:last-child {
@@ -565,13 +553,13 @@
         /* ==================== STATUS BADGES ==================== */
         .status-badge {
             display: inline-block;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            min-width: 85px;
+            min-width: 100px;
             text-align: center;
         }
         
@@ -602,12 +590,12 @@
         /* ==================== ACTION BUTTONS ==================== */
         .action-buttons {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
         
         .action-btn {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -616,7 +604,7 @@
             cursor: pointer;
             transition: var(--transition);
             color: white;
-            font-size: 13px;
+            font-size: 14px;
         }
         
         .action-btn.view {
@@ -627,6 +615,10 @@
             background: linear-gradient(135deg, var(--warning) 0%, #e0a800 100%);
         }
         
+        .action-btn.delete {
+            background: linear-gradient(135deg, var(--danger) 0%, #c82333 100%);
+        }
+        
         .action-btn:hover {
             opacity: 0.9;
             transform: scale(1.05);
@@ -635,20 +627,19 @@
         /* ==================== NO ORDERS MESSAGE ==================== */
         .no-orders {
             text-align: center;
-            padding: 50px 15px;
+            padding: 60px 20px;
             color: var(--gray);
         }
         
         .no-orders i {
-            font-size: 50px;
-            margin-bottom: 15px;
+            font-size: 60px;
+            margin-bottom: 20px;
             color: var(--light-gray);
         }
         
         .no-orders h3 {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: var(--gray);
-            font-size: 18px;
         }
         
         /* ==================== MODAL ==================== */
@@ -663,9 +654,8 @@
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 20px;
             animation: fadeIn 0.3s ease;
-            overflow-y: auto;
         }
         
         .modal.active {
@@ -674,9 +664,9 @@
         
         .modal-content {
             background-color: white;
-            border-radius: 12px;
+            border-radius: 15px;
+            max-width: 800px;
             width: 100%;
-            max-width: 700px;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
@@ -684,22 +674,22 @@
         }
         
         @keyframes modalSlideIn {
-            from { transform: translateY(-30px); opacity: 0; }
+            from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
         
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 28px;
             color: var(--gray);
             cursor: pointer;
             z-index: 10;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -713,42 +703,42 @@
         }
         
         .modal-header {
-            padding: 22px 25px 12px;
+            padding: 25px 30px 15px;
             border-bottom: 1px solid var(--light-gray);
         }
         
         .modal-header h2 {
             color: var(--secondary);
-            font-size: 22px;
+            font-size: 24px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .modal-body {
-            padding: 25px;
+            padding: 30px;
         }
         
         .order-details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
         }
         
         .detail-section {
-            margin-bottom: 22px;
+            margin-bottom: 25px;
         }
         
         .detail-section h3 {
             color: var(--secondary);
-            margin-bottom: 12px;
-            font-size: 17px;
-            padding-bottom: 6px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            padding-bottom: 8px;
             border-bottom: 2px solid var(--light-gray);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .detail-section h3 i {
@@ -757,38 +747,33 @@
         
         .detail-item {
             display: flex;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
+            margin-bottom: 12px;
         }
         
         .detail-label {
             font-weight: 600;
-            width: 130px;
+            width: 150px;
             color: var(--secondary);
             flex-shrink: 0;
-            font-size: 14px;
         }
         
         .items-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 8px;
-            font-size: 14px;
+            margin-top: 10px;
         }
         
         .items-table th {
             background-color: var(--light-gray);
-            padding: 11px;
+            padding: 12px;
             text-align: left;
             color: var(--secondary);
             font-weight: 600;
-            font-size: 13px;
         }
         
         .items-table td {
-            padding: 11px;
+            padding: 12px;
             border-bottom: 1px solid var(--light-gray);
-            font-size: 13px;
         }
         
         .items-table tr:last-child td {
@@ -796,24 +781,21 @@
         }
         
         .modal-footer {
-            padding: 18px 25px;
+            padding: 20px 30px;
             border-top: 1px solid var(--light-gray);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
         }
         
         .status-select {
-            padding: 9px 13px;
+            padding: 10px 15px;
             border-radius: 6px;
             border: 1px solid var(--light-gray);
-            font-size: 15px;
-            min-width: 180px;
+            font-size: 16px;
+            min-width: 200px;
             background-color: white;
             cursor: pointer;
-            flex: 1;
         }
         
         .status-select:focus {
@@ -826,11 +808,11 @@
             display: inline-block;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 11px 22px;
+            padding: 12px 24px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 16px;
             border: none;
             cursor: pointer;
             transition: var(--transition);
@@ -838,7 +820,7 @@
         
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(255, 107, 53, 0.25);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
         }
         
         .btn-secondary {
@@ -848,17 +830,17 @@
         /* ==================== NOTIFICATIONS ==================== */
         .notification {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             background: linear-gradient(135deg, var(--success) 0%, #1e7e34 100%);
             color: white;
-            padding: 14px 22px;
+            padding: 15px 25px;
             border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             z-index: 3000;
             animation: slideInRight 0.3s ease, slideOutRight 0.3s ease 4.7s;
-            max-width: 320px;
-            font-size: 13px;
+            max-width: 350px;
+            font-size: 14px;
             line-height: 1.4;
         }
         
@@ -868,10 +850,6 @@
         
         .notification.warning {
             background: linear-gradient(135deg, var(--warning) 0%, #e0a800 100%);
-        }
-        
-        .notification.info {
-            background: linear-gradient(135deg, var(--info) 0%, #138496 100%);
         }
         
         @keyframes slideInRight {
@@ -896,51 +874,20 @@
             }
         }
         
-        /* ==================== CONNECTION STATUS ==================== */
-        .connection-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            background-color: rgba(40, 167, 69, 0.15);
-            color: #155724;
-            border: 1px solid rgba(40, 167, 69, 0.3);
-        }
-        
-        .connection-status.offline {
-            background-color: rgba(220, 53, 69, 0.15);
-            color: #721c24;
-            border: 1px solid rgba(220, 53, 69, 0.3);
-        }
-        
-        .connection-status .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #28a745;
-            animation: blink 2s infinite;
-        }
-        
-        .connection-status.offline .status-dot {
-            background-color: #dc3545;
-            animation: none;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 992px) {
+            .order-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .orders-table {
-                min-width: 900px;
+                display: block;
+                overflow-x: auto;
             }
             
             .modal-footer {
                 flex-direction: column;
+                gap: 15px;
                 align-items: stretch;
             }
             
@@ -956,12 +903,12 @@
             }
             
             .search-box {
-                width: 100%;
-                min-width: 100%;
+                max-width: 100%;
             }
             
             .filter-controls {
-                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 5px;
                 justify-content: flex-start;
             }
             
@@ -970,16 +917,10 @@
             }
             
             .admin-title h1 {
-                font-size: 24px;
-            }
-            
-            .modal-body {
-                padding: 20px;
-            }
-            
-            .order-details-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                font-size: 28px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
             }
         }
         
@@ -988,100 +929,28 @@
                 grid-template-columns: 1fr;
             }
             
-            .admin-header-content {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-            
-            .admin-user {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
             .orders-table th, 
             .orders-table td {
-                padding: 11px 8px;
-                font-size: 13px;
+                padding: 12px 8px;
+                font-size: 14px;
             }
             
             .action-buttons {
                 flex-direction: column;
-                align-items: center;
             }
             
             .action-btn {
-                width: 30px;
-                height: 30px;
+                width: 32px;
+                height: 32px;
             }
             
             .login-box {
-                padding: 25px 18px;
+                padding: 30px 20px;
             }
             
-            .modal-content {
-                max-height: 95vh;
+            .modal-body {
+                padding: 20px;
             }
-            
-            .table-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .refresh-btn {
-                align-self: flex-start;
-            }
-            
-            .detail-label {
-                width: 110px;
-            }
-        }
-        
-        @media (max-width: 400px) {
-            .filter-btn {
-                padding: 8px 12px;
-                font-size: 13px;
-            }
-            
-            .stat-card {
-                padding: 15px;
-            }
-            
-            .stat-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-            
-            .stat-info h3 {
-                font-size: 22px;
-            }
-            
-            .notification {
-                max-width: 280px;
-                right: 10px;
-                left: 10px;
-            }
-        }
-        
-        /* ==================== SCROLLBAR ==================== */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--light-gray);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
         }
     </style>
 </head>
@@ -1137,16 +1006,10 @@
                     </div>
                     
                     <div class="admin-user">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div class="admin-avatar">A</div>
-                            <div>
-                                <div style="font-weight: 600; font-size: 15px;">Administrator</div>
-                                <div style="font-size: 13px; opacity: 0.8;">PANGS!T Manager</div>
-                            </div>
-                        </div>
-                        <div class="connection-status" id="connectionStatus">
-                            <div class="status-dot"></div>
-                            <span id="statusText">Online</span>
+                        <div class="admin-avatar">A</div>
+                        <div>
+                            <div style="font-weight: 600;">Administrator</div>
+                            <div style="font-size: 14px; opacity: 0.8;">PANGS!T Manager</div>
                         </div>
                         <button class="logout-btn" id="logoutBtn">
                             <i class="fas fa-sign-out-alt"></i> Keluar
@@ -1165,10 +1028,7 @@
                         <i class="fas fa-shopping-cart"></i> Manajemen Pesanan
                         <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
                     </h1>
-                    <p style="font-size: 14px;">
-                        <span id="lastUpdateTime">Mengambil data...</span> 
-                        <span id="deviceInfo" style="font-size: 12px; color: var(--gray);"></span>
-                    </p>
+                    <p>Pesanan baru akan muncul otomatis dalam 3 detik</p>
                 </div>
                 
                 <!-- Stats -->
@@ -1244,12 +1104,9 @@
                 <div class="orders-table-container">
                     <div class="table-header">
                         <h3><i class="fas fa-table"></i> Daftar Pesanan</h3>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 13px; color: var(--gray);" id="orderCount">0 pesanan</span>
-                            <button class="refresh-btn" id="refreshBtn">
-                                <i class="fas fa-sync-alt"></i> Refresh
-                            </button>
-                        </div>
+                        <button class="refresh-btn" id="refreshBtn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
                     </div>
                     
                     <table class="orders-table">
@@ -1298,12 +1155,12 @@
                     <option value="completed">Selesai</option>
                     <option value="cancelled">Dibatalkan</option>
                 </select>
-                <div style="display: flex; gap: 10px; width: 100%;">
-                    <button class="btn btn-secondary" id="closeDetailBtn" style="flex: 1;">
+                <div>
+                    <button class="btn btn-secondary" id="closeDetailBtn">
                         <i class="fas fa-times"></i> Tutup
                     </button>
-                    <button class="btn" id="updateStatusBtn" style="flex: 1;">
-                        <i class="fas fa-save"></i> Update
+                    <button class="btn" id="updateStatusBtn">
+                        <i class="fas fa-save"></i> Update Status
                     </button>
                 </div>
             </div>
@@ -1319,9 +1176,8 @@
         
         const STORAGE_KEYS = {
             ORDERS: 'pangsit_admin_orders',
-            NEW_ORDER_FLAG: 'pangsit_new_order',
-            LAST_CHECK: 'pangsit_last_order_time',
-            SYNC_VERSION: 'pangsit_sync_version'
+            NEW_ORDER_FLAG: 'pangsit_new_order_flag',
+            LAST_CHECK: 'pangsit_admin_last_check'
         };
         
         // ==================== VARIABEL GLOBAL ====================
@@ -1330,17 +1186,12 @@
         let currentFilter = 'all';
         let currentSearch = '';
         let monitoringInterval = null;
-        let syncInterval = null;
         let currentOrderId = null;
-        let isAdminPageVisible = false;
-        let lastSyncTime = 0;
-        let syncVersion = 0;
         
         // ==================== FUNGSI UTAMA ====================
         
         // Format Rupiah
         function formatRupiah(amount) {
-            if (!amount) return 'Rp 0';
             return new Intl.NumberFormat('id-ID', {
                 style: 'currency',
                 currency: 'IDR',
@@ -1354,7 +1205,7 @@
             try {
                 const date = new Date(dateString);
                 if (isNaN(date.getTime())) {
-                    return dateString;
+                    return dateString; // Return as is if not valid date
                 }
                 return date.toLocaleDateString('id-ID', {
                     day: 'numeric',
@@ -1368,66 +1219,6 @@
             }
         }
         
-        // Format waktu lalu
-        function timeAgo(timestamp) {
-            const now = Date.now();
-            const diff = now - timestamp;
-            
-            const minute = 60 * 1000;
-            const hour = 60 * minute;
-            const day = 24 * hour;
-            
-            if (diff < minute) return 'Baru saja';
-            if (diff < hour) return `${Math.floor(diff / minute)} menit lalu`;
-            if (diff < day) return `${Math.floor(diff / hour)} jam lalu`;
-            return `${Math.floor(diff / day)} hari lalu`;
-        }
-        
-        // Deteksi perangkat
-        function detectDevice() {
-            const ua = navigator.userAgent;
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)) {
-                return '📱 Mobile';
-            } else if (/Tablet|iPad/i.test(ua)) {
-                return '📟 Tablet';
-            } else {
-                return '💻 Desktop';
-            }
-        }
-        
-        // Update UI dengan info perangkat
-        function updateDeviceInfo() {
-            const deviceInfo = document.getElementById('deviceInfo');
-            deviceInfo.textContent = ` | ${detectDevice()}`;
-        }
-        
-        // Update waktu terakhir update
-        function updateLastUpdateTime() {
-            const lastUpdateElement = document.getElementById('lastUpdateTime');
-            lastUpdateElement.textContent = `Update: ${timeAgo(lastSyncTime)}`;
-        }
-        
-        // Update status koneksi
-        function updateConnectionStatus(isOnline) {
-            const statusElement = document.getElementById('connectionStatus');
-            const statusText = document.getElementById('statusText');
-            
-            if (isOnline) {
-                statusElement.classList.remove('offline');
-                statusText.textContent = 'Online';
-            } else {
-                statusElement.classList.add('offline');
-                statusText.textContent = 'Offline';
-            }
-        }
-        
-        // Cek koneksi internet
-        function checkConnection() {
-            const isOnline = navigator.onLine;
-            updateConnectionStatus(isOnline);
-            return isOnline;
-        }
-        
         // Load orders dari localStorage
         function loadOrders() {
             try {
@@ -1435,293 +1226,168 @@
                 orders = stored ? JSON.parse(stored) : [];
                 // Sort by timestamp (newest first)
                 orders.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-                
-                // Update sync version
-                const storedVersion = localStorage.getItem(STORAGE_KEYS.SYNC_VERSION);
-                syncVersion = storedVersion ? parseInt(storedVersion) : 0;
-                
                 return orders;
             } catch (error) {
                 console.error('Error loading orders:', error);
-                orders = [];
                 return [];
-            }
-        }
-        
-        // Save orders ke localStorage
-        function saveOrders() {
-            try {
-                localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
-                syncVersion++;
-                localStorage.setItem(STORAGE_KEYS.SYNC_VERSION, syncVersion.toString());
-                lastSyncTime = Date.now();
-                updateLastUpdateTime();
-                return true;
-            } catch (error) {
-                console.error('Error saving orders:', error);
-                return false;
             }
         }
         
         // Update Statistics
         function updateStats() {
-            try {
-                const pendingCount = orders.filter(o => o.status === 'pending').length;
-                const processingCount = orders.filter(o => o.status === 'processing').length;
-                const completedCount = orders.filter(o => o.status === 'completed').length;
-                const totalOrdersCount = orders.length;
-                
-                document.getElementById('pendingCount').textContent = pendingCount;
-                document.getElementById('processingCount').textContent = processingCount;
-                document.getElementById('completedCount').textContent = completedCount;
-                document.getElementById('totalOrdersCount').textContent = totalOrdersCount;
-                document.getElementById('orderCount').textContent = `${totalOrdersCount} pesanan`;
-            } catch (error) {
-                console.error('Error updating stats:', error);
-            }
-        }
-        
-        // Check if order is new (last 2 minutes)
-        function isNewOrder(order) {
-            try {
-                const twoMinutesAgo = Date.now() - (2 * 60 * 1000);
-                return (order.timestamp || 0) > twoMinutesAgo;
-            } catch (e) {
-                return false;
-            }
+            const pendingCount = orders.filter(o => o.status === 'pending').length;
+            const processingCount = orders.filter(o => o.status === 'processing').length;
+            const completedCount = orders.filter(o => o.status === 'completed').length;
+            const totalOrdersCount = orders.length;
+            
+            document.getElementById('pendingCount').textContent = pendingCount;
+            document.getElementById('processingCount').textContent = processingCount;
+            document.getElementById('completedCount').textContent = completedCount;
+            document.getElementById('totalOrdersCount').textContent = totalOrdersCount;
         }
         
         // Render Orders Table
         function renderOrdersTable(filteredOrders = orders) {
-            try {
-                const tbody = document.getElementById('ordersTableBody');
-                const noOrdersMessage = document.getElementById('noOrdersMessage');
+            const tbody = document.getElementById('ordersTableBody');
+            const noOrdersMessage = document.getElementById('noOrdersMessage');
+            
+            tbody.innerHTML = '';
+            
+            if (filteredOrders.length === 0) {
+                noOrdersMessage.style.display = 'block';
+                return;
+            }
+            
+            noOrdersMessage.style.display = 'none';
+            
+            filteredOrders.forEach((order, index) => {
+                const row = document.createElement('tr');
                 
-                tbody.innerHTML = '';
-                
-                if (filteredOrders.length === 0) {
-                    noOrdersMessage.style.display = 'block';
-                    return;
+                // Check if order is new (last 5 minutes)
+                if (isNewOrder(order)) {
+                    row.classList.add('new-order');
                 }
                 
-                noOrdersMessage.style.display = 'none';
+                // Calculate total items
+                const totalItems = order.products ? order.products.reduce((sum, product) => sum + (product.quantity || 1), 0) : 0;
                 
-                filteredOrders.forEach((order) => {
-                    const row = document.createElement('tr');
-                    
-                    // Check if order is new
-                    if (isNewOrder(order)) {
-                        row.classList.add('new-order');
-                        // Remove new-order class after animation
-                        setTimeout(() => {
-                            row.classList.remove('new-order');
-                        }, 2000);
-                    }
-                    
-                    // Calculate total items
-                    const totalItems = order.products ? 
-                        order.products.reduce((sum, product) => sum + (product.quantity || 1), 0) : 0;
-                    
-                    // Status badge
-                    let statusClass, statusText;
-                    switch(order.status) {
-                        case 'pending':
-                            statusClass = 'status-pending';
-                            statusText = 'Menunggu';
-                            break;
-                        case 'processing':
-                            statusClass = 'status-processing';
-                            statusText = 'Diproses';
-                            break;
-                        case 'completed':
-                            statusClass = 'status-completed';
-                            statusText = 'Selesai';
-                            break;
-                        case 'cancelled':
-                            statusClass = 'status-cancelled';
-                            statusText = 'Dibatalkan';
-                            break;
-                        default:
-                            statusClass = 'status-pending';
-                            statusText = 'Menunggu';
-                    }
-                    
-                    row.innerHTML = `
-                        <td class="order-id">${order.id || 'N/A'}</td>
-                        <td>
-                            <div class="customer-info">
-                                <div class="customer-name">${order.customer?.name || 'Tidak ada nama'}</div>
-                                <div class="customer-phone">${order.customer?.phone || 'Tidak ada telepon'}</div>
-                            </div>
-                        </td>
-                        <td>
-                            <ul class="product-list">
-                                ${order.products ? order.products.map(p => 
-                                    `<li>${p.name || 'Produk'} x${p.quantity || 1}</li>`
-                                ).join('') : '<li>Tidak ada produk</li>'}
-                            </ul>
-                        </td>
-                        <td>${totalItems} item</td>
-                        <td>${formatRupiah(order.total || 0)}</td>
-                        <td>${order.paymentMethod ? order.paymentMethod.toUpperCase() : 'N/A'}</td>
-                        <td>
-                            <span class="status-badge ${statusClass}">${statusText}</span>
-                        </td>
-                        <td>${formatDate(order.date || order.timestamp)}</td>
-                        <td>
-                            <div class="action-buttons">
-                                <button class="action-btn view" data-id="${order.id || ''}" title="Lihat Detail">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                        </td>
-                    `;
-                    
-                    tbody.appendChild(row);
-                });
+                // Status badge
+                let statusClass, statusText;
+                switch(order.status) {
+                    case 'pending':
+                        statusClass = 'status-pending';
+                        statusText = 'Menunggu';
+                        break;
+                    case 'processing':
+                        statusClass = 'status-processing';
+                        statusText = 'Diproses';
+                        break;
+                    case 'completed':
+                        statusClass = 'status-completed';
+                        statusText = 'Selesai';
+                        break;
+                    case 'cancelled':
+                        statusClass = 'status-cancelled';
+                        statusText = 'Dibatalkan';
+                        break;
+                    default:
+                        statusClass = 'status-pending';
+                        statusText = 'Menunggu';
+                }
                 
-                // Add event listeners
-                attachOrderActions();
-            } catch (error) {
-                console.error('Error rendering orders table:', error);
-                document.getElementById('noOrdersMessage').style.display = 'block';
-            }
+                row.innerHTML = `
+                    <td class="order-id">${order.id || 'N/A'}</td>
+                    <td>
+                        <div class="customer-info">
+                            <div class="customer-name">${order.customer?.name || 'Tidak ada nama'}</div>
+                            <div class="customer-phone">${order.customer?.phone || 'Tidak ada telepon'}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <ul class="product-list">
+                            ${order.products ? order.products.map(p => 
+                                `<li>${p.name || 'Produk'} x${p.quantity || 1}</li>`
+                            ).join('') : '<li>Tidak ada produk</li>'}
+                        </ul>
+                    </td>
+                    <td>${totalItems} item</td>
+                    <td>${formatRupiah(order.total || 0)}</td>
+                    <td>${order.paymentMethod ? order.paymentMethod.toUpperCase() : 'N/A'}</td>
+                    <td>
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                    </td>
+                    <td>${formatDate(order.date || order.timestamp)}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn view" data-id="${order.id || ''}">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn edit" data-id="${order.id || ''}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            // Add event listeners
+            attachOrderActions();
         }
         
-        // Sinkronisasi data antar perangkat
-        function syncData() {
-            try {
-                if (!checkConnection()) return false;
-                
-                // Cek perubahan di localStorage
-                const currentOrders = loadOrders();
-                const currentVersion = syncVersion;
-                
-                // Cek untuk pesanan baru dari sessionStorage (cross-device communication)
-                const sessionOrders = sessionStorage.getItem('pangsit_cross_device_orders');
-                if (sessionOrders) {
-                    try {
-                        const newOrders = JSON.parse(sessionOrders);
-                        let hasNewData = false;
-                        
-                        newOrders.forEach(newOrder => {
-                            const existingOrder = currentOrders.find(o => o.id === newOrder.id);
-                            if (!existingOrder) {
-                                currentOrders.unshift(newOrder);
-                                hasNewData = true;
-                            }
-                        });
-                        
-                        if (hasNewData) {
-                            orders = currentOrders;
-                            saveOrders();
-                            showNotification('🔄 Data tersinkronisasi dari perangkat lain', 'info');
-                        }
-                        
-                        // Clear sessionStorage setelah diproses
-                        sessionStorage.removeItem('pangsit_cross_device_orders');
-                    } catch (e) {
-                        console.log('Error parsing session orders:', e);
-                    }
-                }
-                
-                // Cek flag untuk pesanan baru
-                const newOrderFlag = localStorage.getItem(STORAGE_KEYS.NEW_ORDER_FLAG);
-                const newOrderTime = localStorage.getItem(STORAGE_KEYS.LAST_CHECK);
-                
-                let hasNewOrders = false;
-                
-                // Method 1: Check order count
-                if (currentOrders.length > lastOrderCount) {
-                    hasNewOrders = true;
-                    orders = currentOrders;
-                    lastOrderCount = currentOrders.length;
-                }
-                // Method 2: Check for new order flag
-                else if (newOrderFlag) {
-                    try {
-                        const newOrderData = JSON.parse(newOrderFlag);
-                        const existingOrder = orders.find(o => o.id === newOrderData.id);
-                        if (!existingOrder) {
-                            hasNewOrders = true;
-                            orders.unshift(newOrderData);
-                            saveOrders();
-                        }
-                    } catch (e) {
-                        console.log('Cannot parse new order flag');
-                    }
-                }
-                // Method 3: Check for recent order timestamp
-                else if (newOrderTime) {
-                    const lastOrderTime = parseInt(newOrderTime);
-                    const fiveMinutesAgo = Date.now() - (5 * 60 * 1000);
-                    if (lastOrderTime > fiveMinutesAgo) {
-                        orders = loadOrders();
-                        hasNewOrders = true;
-                    }
-                }
-                
-                // Method 4: Check sync version for changes
-                const storedVersion = localStorage.getItem(STORAGE_KEYS.SYNC_VERSION);
-                if (storedVersion && parseInt(storedVersion) > currentVersion) {
-                    orders = loadOrders();
-                    hasNewOrders = true;
-                }
-                
-                // If new orders detected, update display
-                if (hasNewOrders) {
-                    lastOrderCount = orders.length;
-                    
-                    // Apply current filter
-                    let filteredOrders = orders;
-                    if (currentFilter !== 'all') {
-                        filteredOrders = orders.filter(o => o.status === currentFilter);
-                    }
-                    if (currentSearch) {
-                        filteredOrders = filteredOrders.filter(o => 
-                            (o.id && o.id.toLowerCase().includes(currentSearch)) ||
-                            (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch))
-                        );
-                    }
-                    
-                    renderOrdersTable(filteredOrders);
-                    updateStats();
-                    
-                    // Show notification
-                    if (newOrderFlag) {
-                        try {
-                            const newOrder = JSON.parse(newOrderFlag);
-                            showNotification(
-                                `📦 <strong>PESANAN BARU!</strong><br>
-                                 ID: ${newOrder.id}<br>
-                                 👤 ${newOrder.customer || 'Pelanggan'}<br>
-                                 💰 ${formatRupiah(newOrder.total)}`,
-                                'success'
-                            );
-                        } catch (e) {
-                            showNotification('📦 Pesanan baru masuk!', 'success');
-                        }
-                        localStorage.removeItem(STORAGE_KEYS.NEW_ORDER_FLAG);
-                    }
-                    
-                    lastSyncTime = Date.now();
-                    updateLastUpdateTime();
-                    return true;
-                }
-                
-                lastSyncTime = Date.now();
-                updateLastUpdateTime();
-                return false;
-            } catch (error) {
-                console.error('Error syncing data:', error);
-                return false;
-            }
+        // Check if order is new (last 5 minutes)
+        function isNewOrder(order) {
+            const fiveMinutesAgo = Date.now() - (5 * 60 * 1000);
+            return order.timestamp > fiveMinutesAgo;
         }
         
-        // Check for new orders (main function)
+        // Check for new orders
         function checkForNewOrders() {
-            if (!isAdminPageVisible) return;
-            syncData();
+            const currentOrders = loadOrders();
+            const newOrderFlag = localStorage.getItem('pangsit_new_order');
+            
+            // Check if there are new orders
+            if (currentOrders.length > lastOrderCount || newOrderFlag) {
+                const newOrdersCount = currentOrders.length - lastOrderCount;
+                orders = currentOrders;
+                lastOrderCount = currentOrders.length;
+                
+                // Apply current filter
+                let filteredOrders = orders;
+                if (currentFilter !== 'all') {
+                    filteredOrders = orders.filter(o => o.status === currentFilter);
+                }
+                if (currentSearch) {
+                    filteredOrders = filteredOrders.filter(o => 
+                        (o.id && o.id.toLowerCase().includes(currentSearch)) ||
+                        (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch))
+                    );
+                }
+                
+                renderOrdersTable(filteredOrders);
+                updateStats();
+                
+                if (newOrdersCount > 0 && newOrderFlag) {
+                    try {
+                        const newOrder = JSON.parse(newOrderFlag);
+                        showNotification(
+                            `📦 Pesanan Baru: ${newOrder.id}<br>
+                             👤 ${newOrder.customer}<br>
+                             💰 ${formatRupiah(newOrder.total)}`,
+                            'success'
+                        );
+                    } catch (e) {
+                        showNotification(`${newOrdersCount} pesanan baru masuk!`, 'success');
+                    }
+                }
+                
+                // Clear the flag
+                localStorage.removeItem('pangsit_new_order');
+            }
+            
+            // Update last check time
+            localStorage.setItem(STORAGE_KEYS.LAST_CHECK, Date.now().toString());
         }
         
         // Filter orders
@@ -1734,187 +1400,178 @@
         // Search orders
         function searchOrders(query) {
             currentSearch = query.toLowerCase();
-            return orders.filter(o => 
+            const filtered = orders.filter(o => 
                 (o.id && o.id.toLowerCase().includes(currentSearch)) ||
                 (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch)) ||
-                (o.customer?.phone && o.customer.phone.includes(query))
+                (o.customer?.phone && o.customer.phone.includes(query)) ||
+                (o.products && o.products.some(p => p.name && p.name.toLowerCase().includes(currentSearch)))
             );
+            return filtered;
         }
         
         // Show order detail
         function showOrderDetail(orderId) {
-            try {
-                const order = orders.find(o => o.id === orderId);
-                if (!order) {
-                    showNotification('Pesanan tidak ditemukan', 'error');
-                    return;
-                }
-                
-                const content = document.getElementById('orderDetailContent');
-                
-                // Format payment method
-                let paymentMethodText = order.paymentMethod || 'N/A';
-                switch(paymentMethodText.toLowerCase()) {
-                    case 'gopay': paymentMethodText = 'GoPay'; break;
-                    case 'ovo': paymentMethodText = 'OVO'; break;
-                    case 'dana': paymentMethodText = 'DANA'; break;
-                    case 'transfer': paymentMethodText = 'Transfer Bank'; break;
-                    case 'qris': paymentMethodText = 'QRIS'; break;
-                }
-                
-                // Format status
-                let statusText = 'Menunggu Konfirmasi';
-                switch(order.status) {
-                    case 'processing': statusText = 'Sedang Diproses'; break;
-                    case 'completed': statusText = 'Selesai'; break;
-                    case 'cancelled': statusText = 'Dibatalkan'; break;
-                }
-                
-                content.innerHTML = `
-                    <div class="order-details-grid">
-                        <div>
-                            <div class="detail-section">
-                                <h3><i class="fas fa-info-circle"></i> Informasi Pesanan</h3>
-                                <div class="detail-item">
-                                    <span class="detail-label">ID Pesanan:</span>
-                                    <span><strong>${order.id || 'N/A'}</strong></span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Tanggal:</span>
-                                    <span>${formatDate(order.date || order.timestamp)}</span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Status:</span>
-                                    <span><strong>${statusText}</strong></span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Catatan:</span>
-                                    <span>${order.notes || 'Tidak ada catatan'}</span>
-                                </div>
+            const order = orders.find(o => o.id === orderId);
+            if (!order) {
+                showNotification('Pesanan tidak ditemukan', 'error');
+                return;
+            }
+            
+            // Format payment method
+            let paymentMethodText = order.paymentMethod || 'N/A';
+            switch(paymentMethodText.toLowerCase()) {
+                case 'gopay': paymentMethodText = 'GoPay'; break;
+                case 'ovo': paymentMethodText = 'OVO'; break;
+                case 'dana': paymentMethodText = 'DANA'; break;
+                case 'transfer': paymentMethodText = 'Transfer Bank'; break;
+            }
+            
+            // Format status
+            let statusText = 'Menunggu Konfirmasi';
+            switch(order.status) {
+                case 'processing': statusText = 'Sedang Diproses'; break;
+                case 'completed': statusText = 'Selesai'; break;
+                case 'cancelled': statusText = 'Dibatalkan'; break;
+            }
+            
+            const content = document.getElementById('orderDetailContent');
+            content.innerHTML = `
+                <div class="order-details-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h3><i class="fas fa-info-circle"></i> Informasi Pesanan</h3>
+                            <div class="detail-item">
+                                <span class="detail-label">ID Pesanan:</span>
+                                <span>${order.id || 'N/A'}</span>
                             </div>
-                            
-                            <div class="detail-section">
-                                <h3><i class="fas fa-user"></i> Informasi Pelanggan</h3>
-                                <div class="detail-item">
-                                    <span class="detail-label">Nama:</span>
-                                    <span>${order.customer?.name || 'Tidak ada nama'}</span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Telepon:</span>
-                                    <span>${order.customer?.phone || 'Tidak ada telepon'}</span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Alamat:</span>
-                                    <span>${order.customer?.address || 'Tidak ada alamat'}</span>
-                                </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Tanggal:</span>
+                                <span>${formatDate(order.date || order.timestamp)}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Status:</span>
+                                <span><strong>${statusText}</strong></span>
                             </div>
                         </div>
                         
-                        <div>
-                            <div class="detail-section">
-                                <h3><i class="fas fa-credit-card"></i> Informasi Pembayaran</h3>
-                                <div class="detail-item">
-                                    <span class="detail-label">Metode:</span>
-                                    <span>${paymentMethodText}</span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Subtotal:</span>
-                                    <span>${formatRupiah(order.subtotal || 0)}</span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Pengiriman:</span>
-                                    <span>${formatRupiah(order.shipping || 0)}</span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Pajak:</span>
-                                    <span>${formatRupiah(order.tax || 0)}</span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="detail-label">Total:</span>
-                                    <span><strong style="color: var(--primary);">${formatRupiah(order.total || 0)}</strong></span>
-                                </div>
+                        <div class="detail-section">
+                            <h3><i class="fas fa-user"></i> Informasi Pelanggan</h3>
+                            <div class="detail-item">
+                                <span class="detail-label">Nama:</span>
+                                <span>${order.customer?.name || 'Tidak ada nama'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Telepon:</span>
+                                <span>${order.customer?.phone || 'Tidak ada telepon'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Alamat:</span>
+                                <span>${order.customer?.address || 'Tidak ada alamat'}</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="detail-section">
-                        <h3><i class="fas fa-box"></i> Detail Produk</h3>
-                        <table class="items-table">
-                            <thead>
-                                <tr>
-                                    <th>Produk</th>
-                                    <th>Harga</th>
-                                    <th>Jumlah</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${order.products ? order.products.map(p => `
-                                    <tr>
-                                        <td>${p.name || 'Produk'}</td>
-                                        <td>${formatRupiah(p.price || 0)}</td>
-                                        <td>${p.quantity || 1}</td>
-                                        <td>${formatRupiah((p.price || 0) * (p.quantity || 1))}</td>
-                                    </tr>
-                                `).join('') : `
-                                    <tr>
-                                        <td colspan="4" style="text-align: center;">Tidak ada produk</td>
-                                    </tr>
-                                `}
-                            </tbody>
-                        </table>
+                    <div>
+                        <div class="detail-section">
+                            <h3><i class="fas fa-credit-card"></i> Informasi Pembayaran</h3>
+                            <div class="detail-item">
+                                <span class="detail-label">Metode:</span>
+                                <span>${paymentMethodText}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Subtotal:</span>
+                                <span>${formatRupiah(order.subtotal || 0)}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Pengiriman:</span>
+                                <span>${formatRupiah(order.shipping || 0)}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Pajak:</span>
+                                <span>${formatRupiah(order.tax || 0)}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Total:</span>
+                                <span><strong>${formatRupiah(order.total || 0)}</strong></span>
+                            </div>
+                        </div>
+                        
+                        ${order.notes ? `
+                        <div class="detail-section">
+                            <h3><i class="fas fa-sticky-note"></i> Catatan</h3>
+                            <p>${order.notes}</p>
+                        </div>
+                        ` : ''}
                     </div>
-                `;
+                </div>
                 
-                // Set current status in select
-                document.getElementById('statusSelect').value = order.status || 'pending';
-                
-                // Save order ID for update
-                document.getElementById('orderDetailModal').dataset.orderId = orderId;
-                
-                // Show modal
-                document.getElementById('orderDetailModal').classList.add('active');
-            } catch (error) {
-                console.error('Error showing order detail:', error);
-                showNotification('Gagal menampilkan detail pesanan', 'error');
-            }
+                <div class="detail-section">
+                    <h3><i class="fas fa-box"></i> Detail Produk</h3>
+                    <table class="items-table">
+                        <thead>
+                            <tr>
+                                <th>Produk</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${order.products ? order.products.map(p => `
+                                <tr>
+                                    <td>${p.name || 'Produk'}</td>
+                                    <td>${formatRupiah(p.price || 0)}</td>
+                                    <td>${p.quantity || 1}</td>
+                                    <td>${formatRupiah((p.price || 0) * (p.quantity || 1))}</td>
+                                </tr>
+                            `).join('') : `
+                                <tr>
+                                    <td colspan="4" style="text-align: center;">Tidak ada produk</td>
+                                </tr>
+                            `}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            // Set current status in select
+            document.getElementById('statusSelect').value = order.status || 'pending';
+            
+            // Save order ID for update
+            document.getElementById('orderDetailModal').dataset.orderId = orderId;
+            
+            // Show modal
+            document.getElementById('orderDetailModal').classList.add('active');
         }
         
         // Update order status
         function updateOrderStatus(orderId, newStatus) {
-            try {
-                const order = orders.find(o => o.id === orderId);
-                if (order) {
-                    order.status = newStatus;
-                    order.updatedAt = new Date().toISOString();
-                    
-                    // Save to localStorage
-                    saveOrders();
-                    
-                    // Re-render table
-                    let filteredOrders = orders;
-                    if (currentFilter !== 'all') {
-                        filteredOrders = orders.filter(o => o.status === currentFilter);
-                    }
-                    if (currentSearch) {
-                        filteredOrders = filteredOrders.filter(o => 
-                            (o.id && o.id.toLowerCase().includes(currentSearch)) ||
-                            (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch))
-                        );
-                    }
-                    
-                    renderOrdersTable(filteredOrders);
-                    updateStats();
-                    
-                    showNotification(`Status pesanan ${orderId} diubah ke ${newStatus}`, 'success');
-                    return true;
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                order.status = newStatus;
+                
+                // Save to localStorage
+                localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
+                
+                // Re-render table
+                let filteredOrders = orders;
+                if (currentFilter !== 'all') {
+                    filteredOrders = orders.filter(o => o.status === currentFilter);
                 }
-                return false;
-            } catch (error) {
-                console.error('Error updating order status:', error);
-                showNotification('Gagal mengupdate status pesanan', 'error');
-                return false;
+                if (currentSearch) {
+                    filteredOrders = filteredOrders.filter(o => 
+                        (o.id && o.id.toLowerCase().includes(currentSearch)) ||
+                        (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch))
+                    );
+                }
+                
+                renderOrdersTable(filteredOrders);
+                updateStats();
+                
+                showNotification(`Status pesanan ${orderId} diubah ke ${newStatus}`, 'success');
+                return true;
             }
+            return false;
         }
         
         // Attach event listeners to order actions
@@ -1928,33 +1585,39 @@
                     }
                 });
             });
+            
+            // Edit buttons
+            document.querySelectorAll('.action-btn.edit').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const orderId = this.getAttribute('data-id');
+                    if (orderId) {
+                        showOrderDetail(orderId);
+                    }
+                });
+            });
         }
         
         // Show notification
         function showNotification(message, type = 'success') {
-            try {
-                // Remove existing notification
-                const existingNotification = document.querySelector('.notification');
-                if (existingNotification) {
-                    existingNotification.remove();
-                }
-                
-                // Create notification element
-                const notification = document.createElement('div');
-                notification.className = `notification ${type}`;
-                notification.innerHTML = message;
-                
-                document.body.appendChild(notification);
-                
-                // Auto remove after 5 seconds
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 5000);
-            } catch (error) {
-                console.error('Error showing notification:', error);
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
             }
+            
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = message;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 5000);
         }
         
         // Start real-time monitoring
@@ -1962,53 +1625,48 @@
             // Initial load
             loadOrders();
             lastOrderCount = orders.length;
-            lastSyncTime = Date.now();
-            
             renderOrdersTable();
             updateStats();
-            updateDeviceInfo();
-            updateLastUpdateTime();
-            checkConnection();
             
-            // Start interval for checking new orders (every 1.5 seconds for faster response)
-            monitoringInterval = setInterval(checkForNewOrders, 1500);
+            // Start interval for checking new orders (every 3 seconds)
+            monitoringInterval = setInterval(checkForNewOrders, 3000);
             
-            // Start sync interval for cross-device communication (every 3 seconds)
-            syncInterval = setInterval(syncData, 3000);
-            
-            // Listen for storage events (from other tabs/windows)
+            // Listen for storage events (from other tabs)
             window.addEventListener('storage', function(e) {
-                if (e.key === STORAGE_KEYS.ORDERS || 
-                    e.key === STORAGE_KEYS.NEW_ORDER_FLAG || 
-                    e.key === STORAGE_KEYS.SYNC_VERSION) {
+                if (e.key === STORAGE_KEYS.ORDERS || e.key === 'pangsit_new_order') {
                     checkForNewOrders();
                 }
             });
             
-            // Listen for online/offline events
-            window.addEventListener('online', () => {
-                checkConnection();
-                checkForNewOrders();
-            });
-            
-            window.addEventListener('offline', () => {
-                checkConnection();
-            });
-            
-            // Also check when window gets focus (user comes back to tab)
-            window.addEventListener('focus', function() {
-                checkForNewOrders();
-            });
-            
-            // Check for new orders when page becomes visible
-            document.addEventListener('visibilitychange', function() {
-                if (!document.hidden) {
-                    checkForNewOrders();
+            // Listen for custom events
+            window.addEventListener('newPangsitOrder', function(e) {
+                if (e.detail) {
+                    orders.unshift(e.detail);
+                    lastOrderCount = orders.length;
+                    
+                    // Apply current filter
+                    let filteredOrders = orders;
+                    if (currentFilter !== 'all') {
+                        filteredOrders = orders.filter(o => o.status === currentFilter);
+                    }
+                    
+                    renderOrdersTable(filteredOrders);
+                    updateStats();
+                    
+                    showNotification(
+                        `🔥 PESANAN BARU LANGSUNG!<br>
+                         📋 ${e.detail.id}<br>
+                         👤 ${e.detail.customer?.name || 'Pelanggan'}<br>
+                         💰 ${formatRupiah(e.detail.total || 0)}`,
+                        'success'
+                    );
                 }
             });
             
-            console.log('🔔 Monitoring pesanan diaktifkan - Siap menerima pesanan dari HP & Laptop');
-            showNotification('✅ Sistem monitoring aktif! Siap menerima pesanan dari HP & Laptop', 'success');
+            // Also check when window gets focus
+            window.addEventListener('focus', checkForNewOrders);
+            
+            console.log('🔔 Monitoring pesanan diaktifkan');
         }
         
         // Stop monitoring
@@ -2017,15 +1675,10 @@
                 clearInterval(monitoringInterval);
                 monitoringInterval = null;
             }
-            if (syncInterval) {
-                clearInterval(syncInterval);
-                syncInterval = null;
-            }
         }
         
         // Initialize admin dashboard
         function initAdmin() {
-            isAdminPageVisible = true;
             startMonitoring();
             
             // Filter buttons
@@ -2054,12 +1707,10 @@
             
             // Refresh button
             document.getElementById('refreshBtn').addEventListener('click', function() {
-                const icon = this.querySelector('i');
-                icon.classList.add('rotating');
-                loadOrders();
-                syncData();
+                this.classList.add('rotating');
+                checkForNewOrders();
                 setTimeout(() => {
-                    icon.classList.remove('rotating');
+                    this.classList.remove('rotating');
                 }, 1000);
             });
             
@@ -2090,7 +1741,6 @@
             
             // Logout button
             document.getElementById('logoutBtn').addEventListener('click', () => {
-                isAdminPageVisible = false;
                 stopMonitoring();
                 localStorage.removeItem('pangsit_admin_logged_in');
                 document.getElementById('adminPage').style.display = 'none';
@@ -2134,9 +1784,38 @@
         
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Auto-fill login for testing
-            document.getElementById('username').value = 'admin';
-            document.getElementById('password').value = 'admin123';
+            // Add CSS animations for notifications
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+                
+                @keyframes slideOutRight {
+                    from {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                }
+                
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                    100% { transform: scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
             
             // Check if already logged in
             const isLoggedIn = localStorage.getItem('pangsit_admin_logged_in') === 'true';
@@ -2151,13 +1830,9 @@
                 initLogin();
             }
             
-            // Add touch event support for mobile
-            document.addEventListener('touchstart', function(){}, {passive: true});
-            
-            // Handle orientation change
-            window.addEventListener('orientationchange', function() {
-                setTimeout(checkForNewOrders, 300);
-            });
+            // Auto-fill login for testing (remove in production)
+            document.getElementById('username').value = 'admin';
+            document.getElementById('password').value = 'admin123';
         });
     </script>
 </body>
