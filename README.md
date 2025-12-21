@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin PANGS!T - Monitoring Pesanan Real-Time</title>
-    <!-- Gunakan CDN untuk semua resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1175,8 +1174,9 @@
         };
         
         const STORAGE_KEYS = {
-            ORDERS: 'pangsit_admin_orders',
-            NEW_ORDER_FLAG: 'pangsit_new_order_flag',
+            ADMIN_ORDERS: 'pangsit_admin_orders',
+            CUSTOMER_ORDERS_PREFIX: 'customerOrders_',
+            NEW_ORDER_FLAG: 'pangsit_new_order',
             LAST_CHECK: 'pangsit_admin_last_check'
         };
         
@@ -1219,18 +1219,190 @@
             }
         }
         
-        // Load orders dari localStorage
-        function loadOrders() {
+        // Fungsi untuk membaca SEMUA pesanan dari semua sumber
+        function loadAllOrders() {
+            const allOrders = [];
+            
             try {
-                const stored = localStorage.getItem(STORAGE_KEYS.ORDERS);
-                orders = stored ? JSON.parse(stored) : [];
+                // 1. Load dari localStorage admin (sistem utama)
+                const adminOrders = localStorage.getItem(STORAGE_KEYS.ADMIN_ORDERS);
+                if (adminOrders) {
+                    try {
+                        const parsed = JSON.parse(adminOrders);
+                        if (Array.isArray(parsed)) {
+                            parsed.forEach(order => {
+                                if (order && order.id) {
+                                    allOrders.push({
+                                        ...order,
+                                        source: 'admin'
+                                    });
+                                }
+                            });
+                        }
+                    } catch (e) {
+                        console.error('Error parsing admin orders:', e);
+                    }
+                }
+                
+                // 2. Load dari sessionStorage (untuk pesanan dari tab yang sama)
+                for (let i = 0; i < sessionStorage.length; i++) {
+                    const key = sessionStorage.key(i);
+                    if (key.includes('customerOrders') || key.includes('pangsit_order')) {
+                        try {
+                            const orderData = JSON.parse(sessionStorage.getItem(key));
+                            if (orderData && orderData.id) {
+                                allOrders.push({
+                                    ...orderData,
+                                    source: 'session'
+                                });
+                            }
+                        } catch (e) {
+                            console.error('Error parsing session order:', e);
+                        }
+                    }
+                }
+                
+                // 3. Load dari semua localStorage (untuk pesanan dari browser lain/tab lain)
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    // Cari semua kunci yang berisi data pesanan
+                    if (key.startsWith(STORAGE_KEYS.CUSTOMER_ORDERS_PREFIX) || 
+                        key.includes('customerOrders') || 
+                        key.includes('pangsit_') ||
+                        (key.includes('order') && !key.includes('admin'))) {
+                        try {
+                            const item = localStorage.getItem(key);
+                            if (item) {
+                                const parsed = JSON.parse(item);
+                                
+                                if (Array.isArray(parsed)) {
+                                    // Ini array of orders
+                                    parsed.forEach(order => {
+                                        if (order && order.id) {
+                                            allOrders.push({
+                                                ...order,
+                                                source: 'localStorage'
+                                            });
+                                        }
+                                    });
+                                } else if (parsed && parsed.id) {
+                                    // Ini single order
+                                    allOrders.push({
+                                        ...parsed,
+                                        source: 'localStorage'
+                                    });
+                                }
+                            }
+                        } catch (e) {
+                            console.error('Error parsing localStorage order:', e);
+                        }
+                    }
+                }
+                
+                // 4. Tambahkan data contoh untuk testing
+                if (allOrders.length === 0) {
+                    allOrders.push(...getSampleOrders());
+                }
+                
+                // Remove duplicates berdasarkan ID
+                const uniqueOrders = [];
+                const seenIds = new Set();
+                
+                allOrders.forEach(order => {
+                    if (order.id && !seenIds.has(order.id)) {
+                        seenIds.add(order.id);
+                        uniqueOrders.push(order);
+                    }
+                });
+                
                 // Sort by timestamp (newest first)
-                orders.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
-                return orders;
+                uniqueOrders.sort((a, b) => {
+                    const timeA = a.timestamp || new Date(a.date || 0).getTime() || 0;
+                    const timeB = b.timestamp || new Date(b.date || 0).getTime() || 0;
+                    return timeB - timeA;
+                });
+                
+                console.log(`✅ Loaded ${uniqueOrders.length} orders from all sources`);
+                return uniqueOrders;
+                
             } catch (error) {
                 console.error('Error loading orders:', error);
-                return [];
+                return getSampleOrders();
             }
+        }
+        
+        // Fungsi untuk mendapatkan data contoh (untuk testing)
+        function getSampleOrders() {
+            return [
+                {
+                    id: 'PANG-20241215-143025-001',
+                    customer: {
+                        name: 'Budi Santoso',
+                        phone: '081234567890',
+                        address: 'Jl. Merdeka No. 123, Jakarta',
+                        email: 'budi@example.com'
+                    },
+                    products: [
+                        { name: 'fire silk wonton', price: 20000, quantity: 2 },
+                        { name: 'crispy melt deluxe', price: 13000, quantity: 1 }
+                    ],
+                    subtotal: 53000,
+                    shipping: 15000,
+                    tax: 5300,
+                    total: 73300,
+                    paymentMethod: 'gopay',
+                    status: 'pending',
+                    date: '15 Des 2024',
+                    time: '14:30',
+                    timestamp: new Date().getTime() - 3600000,
+                    notes: 'Tolong dibungkus rapi'
+                },
+                {
+                    id: 'PANG-20241215-132045-456',
+                    customer: {
+                        name: 'Siti Rahayu',
+                        phone: '082345678901',
+                        address: 'Jl. Sudirman No. 45, Bandung',
+                        email: 'siti@example.com'
+                    },
+                    products: [
+                        { name: 'Golden chili crunch', price: 15000, quantity: 3 }
+                    ],
+                    subtotal: 45000,
+                    shipping: 15000,
+                    tax: 4500,
+                    total: 64500,
+                    paymentMethod: 'ovo',
+                    status: 'processing',
+                    date: '15 Des 2024',
+                    time: '13:20',
+                    timestamp: new Date().getTime() - 7200000,
+                    notes: 'Extra pedas'
+                },
+                {
+                    id: 'PANG-20241214-091510-789',
+                    customer: {
+                        name: 'Ahmad Wijaya',
+                        phone: '083456789012',
+                        address: 'Jl. Gatot Subroto No. 78, Surabaya',
+                        email: 'ahmad@example.com'
+                    },
+                    products: [
+                        { name: 'pangsit kuah mercon', price: 20000, quantity: 2 },
+                        { name: 'pangsit isi tahu', price: 15000, quantity: 2 }
+                    ],
+                    subtotal: 70000,
+                    shipping: 15000,
+                    tax: 7000,
+                    total: 92000,
+                    paymentMethod: 'dana',
+                    status: 'completed',
+                    date: '14 Des 2024',
+                    time: '09:15',
+                    timestamp: new Date().getTime() - 86400000,
+                    notes: ''
+                }
+            ];
         }
         
         // Update Statistics
@@ -1339,16 +1511,17 @@
         // Check if order is new (last 5 minutes)
         function isNewOrder(order) {
             const fiveMinutesAgo = Date.now() - (5 * 60 * 1000);
-            return order.timestamp > fiveMinutesAgo;
+            const orderTime = order.timestamp || new Date(order.date || 0).getTime();
+            return orderTime > fiveMinutesAgo;
         }
         
         // Check for new orders
         function checkForNewOrders() {
-            const currentOrders = loadOrders();
+            const currentOrders = loadAllOrders();
             const newOrderFlag = localStorage.getItem('pangsit_new_order');
             
             // Check if there are new orders
-            if (currentOrders.length > lastOrderCount || newOrderFlag) {
+            if (currentOrders.length !== lastOrderCount || newOrderFlag) {
                 const newOrdersCount = currentOrders.length - lastOrderCount;
                 orders = currentOrders;
                 lastOrderCount = currentOrders.length;
@@ -1361,7 +1534,9 @@
                 if (currentSearch) {
                     filteredOrders = filteredOrders.filter(o => 
                         (o.id && o.id.toLowerCase().includes(currentSearch)) ||
-                        (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch))
+                        (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch)) ||
+                        (o.customer?.phone && o.customer.phone.includes(currentSearch)) ||
+                        (o.products && o.products.some(p => p.name && p.name.toLowerCase().includes(currentSearch)))
                     );
                 }
                 
@@ -1378,8 +1553,12 @@
                             'success'
                         );
                     } catch (e) {
-                        showNotification(`${newOrdersCount} pesanan baru masuk!`, 'success');
+                        if (newOrdersCount > 0) {
+                            showNotification(`${newOrdersCount} pesanan baru masuk!`, 'success');
+                        }
                     }
+                } else if (newOrdersCount > 0) {
+                    showNotification(`${newOrdersCount} pesanan baru ditemukan!`, 'success');
                 }
                 
                 // Clear the flag
@@ -1423,7 +1602,11 @@
                 case 'gopay': paymentMethodText = 'GoPay'; break;
                 case 'ovo': paymentMethodText = 'OVO'; break;
                 case 'dana': paymentMethodText = 'DANA'; break;
-                case 'transfer': paymentMethodText = 'Transfer Bank'; break;
+                case 'qris': paymentMethodText = 'QRIS'; break;
+                case 'bca': paymentMethodText = 'Transfer BCA'; break;
+                case 'mandiri': paymentMethodText = 'Transfer Mandiri'; break;
+                case 'bni': paymentMethodText = 'Transfer BNI'; break;
+                case 'bri': paymentMethodText = 'Transfer BRI'; break;
             }
             
             // Format status
@@ -1452,6 +1635,10 @@
                                 <span class="detail-label">Status:</span>
                                 <span><strong>${statusText}</strong></span>
                             </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Sumber Data:</span>
+                                <span>${order.source || 'unknown'}</span>
+                            </div>
                         </div>
                         
                         <div class="detail-section">
@@ -1463,6 +1650,10 @@
                             <div class="detail-item">
                                 <span class="detail-label">Telepon:</span>
                                 <span>${order.customer?.phone || 'Tidak ada telepon'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Email:</span>
+                                <span>${order.customer?.email || 'Tidak ada email'}</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Alamat:</span>
@@ -1550,26 +1741,43 @@
             if (order) {
                 order.status = newStatus;
                 
-                // Save to localStorage
-                localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
-                
-                // Re-render table
-                let filteredOrders = orders;
-                if (currentFilter !== 'all') {
-                    filteredOrders = orders.filter(o => o.status === currentFilter);
+                // Save to admin storage
+                try {
+                    // Update in orders array
+                    const orderIndex = orders.findIndex(o => o.id === orderId);
+                    if (orderIndex !== -1) {
+                        orders[orderIndex].status = newStatus;
+                    }
+                    
+                    // Save to localStorage untuk admin
+                    const adminOrders = orders.filter(o => o.source !== 'customer').map(o => {
+                        const { source, ...orderWithoutSource } = o;
+                        return orderWithoutSource;
+                    });
+                    
+                    localStorage.setItem(STORAGE_KEYS.ADMIN_ORDERS, JSON.stringify(adminOrders));
+                    
+                    // Re-render table
+                    let filteredOrders = orders;
+                    if (currentFilter !== 'all') {
+                        filteredOrders = orders.filter(o => o.status === currentFilter);
+                    }
+                    if (currentSearch) {
+                        filteredOrders = filteredOrders.filter(o => 
+                            (o.id && o.id.toLowerCase().includes(currentSearch)) ||
+                            (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch))
+                        );
+                    }
+                    
+                    renderOrdersTable(filteredOrders);
+                    updateStats();
+                    
+                    showNotification(`Status pesanan ${orderId} diubah ke ${newStatus}`, 'success');
+                    return true;
+                } catch (error) {
+                    console.error('Error updating order status:', error);
+                    showNotification('Gagal mengupdate status pesanan', 'error');
                 }
-                if (currentSearch) {
-                    filteredOrders = filteredOrders.filter(o => 
-                        (o.id && o.id.toLowerCase().includes(currentSearch)) ||
-                        (o.customer?.name && o.customer.name.toLowerCase().includes(currentSearch))
-                    );
-                }
-                
-                renderOrdersTable(filteredOrders);
-                updateStats();
-                
-                showNotification(`Status pesanan ${orderId} diubah ke ${newStatus}`, 'success');
-                return true;
             }
             return false;
         }
@@ -1623,7 +1831,7 @@
         // Start real-time monitoring
         function startMonitoring() {
             // Initial load
-            loadOrders();
+            orders = loadAllOrders();
             lastOrderCount = orders.length;
             renderOrdersTable();
             updateStats();
@@ -1633,16 +1841,31 @@
             
             // Listen for storage events (from other tabs)
             window.addEventListener('storage', function(e) {
-                if (e.key === STORAGE_KEYS.ORDERS || e.key === 'pangsit_new_order') {
+                if (e.key === STORAGE_KEYS.ADMIN_ORDERS || 
+                    e.key === 'pangsit_new_order' || 
+                    e.key.includes('customerOrders') ||
+                    e.key.includes('pangsit_')) {
                     checkForNewOrders();
                 }
             });
             
-            // Listen for custom events
+            // Listen for custom events (from e-commerce page)
             window.addEventListener('newPangsitOrder', function(e) {
                 if (e.detail) {
-                    orders.unshift(e.detail);
+                    // Add new order to the beginning
+                    orders.unshift({
+                        ...e.detail,
+                        source: 'real-time'
+                    });
                     lastOrderCount = orders.length;
+                    
+                    // Save to admin storage
+                    const adminOrders = orders.filter(o => o.source !== 'customer').map(o => {
+                        const { source, ...orderWithoutSource } = o;
+                        return orderWithoutSource;
+                    });
+                    
+                    localStorage.setItem(STORAGE_KEYS.ADMIN_ORDERS, JSON.stringify(adminOrders));
                     
                     // Apply current filter
                     let filteredOrders = orders;
@@ -1665,6 +1888,12 @@
             
             // Also check when window gets focus
             window.addEventListener('focus', checkForNewOrders);
+            
+            // Check every 30 seconds for deep scan
+            setInterval(() => {
+                console.log('🔍 Deep scanning for orders...');
+                checkForNewOrders();
+            }, 30000);
             
             console.log('🔔 Monitoring pesanan diaktifkan');
         }
@@ -1784,38 +2013,9 @@
         
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Add CSS animations for notifications
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideInRight {
-                    from {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                }
-                
-                @keyframes slideOutRight {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                    to {
-                        transform: translateX(100%);
-                        opacity: 0;
-                    }
-                }
-                
-                @keyframes pulse {
-                    0% { transform: scale(1); }
-                    50% { transform: scale(1.05); }
-                    100% { transform: scale(1); }
-                }
-            `;
-            document.head.appendChild(style);
+            // Auto-fill login for testing
+            document.getElementById('username').value = 'admin';
+            document.getElementById('password').value = 'admin123';
             
             // Check if already logged in
             const isLoggedIn = localStorage.getItem('pangsit_admin_logged_in') === 'true';
@@ -1829,10 +2029,6 @@
                 document.getElementById('adminPage').style.display = 'none';
                 initLogin();
             }
-            
-            // Auto-fill login for testing (remove in production)
-            document.getElementById('username').value = 'admin';
-            document.getElementById('password').value = 'admin123';
         });
     </script>
 </body>
