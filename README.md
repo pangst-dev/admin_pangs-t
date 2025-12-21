@@ -1554,7 +1554,7 @@
                         );
                     } catch (e) {
                         if (newOrdersCount > 0) {
-                            showNotification(`${newOrdersCount} pesanan baru masuk!`, 'success');
+                            showNotification(`${newOrdersCount} pesanan baru ditemukan!`, 'success');
                         }
                     }
                 } else if (newOrdersCount > 0) {
